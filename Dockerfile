@@ -17,6 +17,8 @@ ENV SYMFONY_VERSION ${SYMFONY_VERSION}
 
 ENV APP_ENV=prod
 
+ENV DATABASE_URL=""
+
 WORKDIR /srv/app
 
 # php extensions installer: https://github.com/mlocati/docker-php-extension-installer
@@ -82,7 +84,7 @@ RUN set -eux; \
 	mkdir -p var/cache var/log; \
     if [ -f composer.json ]; then \
 		composer dump-autoload --classmap-authoritative --no-dev; \
-		composer dump-env prod; \
+		composer dump-env prod --empty; \
 		composer run-script --no-dev post-install-cmd; \
 		chmod +x bin/console; sync; \
     fi
