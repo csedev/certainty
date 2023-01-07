@@ -1,3 +1,5 @@
+<?php
+
 // tests/ApplicationAvailabilityFunctionalTest.php
 namespace App\Tests;
 
