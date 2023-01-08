@@ -48,8 +48,13 @@ class AdminDashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
+
+        yield MenuItem::section('Data');
         yield MenuItem::linkToCrud('Worklogs', 'fas fa-list', Worklog::class);
+
+        yield MenuItem::section('Users');
+        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
+        
     }
 
     /**
@@ -58,8 +63,12 @@ class AdminDashboardController extends AbstractDashboardController
     public function configureUserMenu(UserInterface $user): UserMenu
     {
         return parent::configureUserMenu($user)
-            ->setAvatarUrl($user->getAvatarUrl());
-    }    
+            // you can use any type of menu item, except submenus
+            ->addMenuItems([
+                MenuItem::linkToRoute('My Profile', 'fa fa-id-card', '...', ['...' => '...']),
+                MenuItem::linkToRoute('Settings', 'fa fa-user-cog', '...', ['...' => '...']),
+            ]);    
+        }    
 
     public function configureAssets(): Assets
     {
