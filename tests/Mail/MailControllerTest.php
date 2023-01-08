@@ -1,7 +1,7 @@
 <?php
 
-// tests/Controller/MailControllerTest.php
-namespace App\Tests\Controller;
+// tests/Controller/Mail/MailControllerTest.php
+namespace App\Tests\Mail;
 
 use Symfony\Bundle\FrameworkBundle\Test\MailerAssertionsTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

@@ -1,7 +1,7 @@
 <?php
 
-// tests/ApplicationAvailabilityFunctionalTest.php
-namespace App\Tests;
+// tests/Controller/Availability/ApplicationAvailabilityFunctionalTest.php
+namespace App\Tests\Availability;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
