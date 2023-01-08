@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html class="h-full bg-gray-50">
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+{% embed "authentication.html.twig" %}
 
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
-	<body class="h-full">
-        {% block body %}
-
-        {% for flash_error in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-        {% endfor %}
+    {% block body %}
 
         <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div class="w-full max-w-md space-y-8">
@@ -29,6 +8,14 @@
                     <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
                     <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Register your account</h2>
                 </div>
+
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="bg-red-100 text-red-700 px-4 py-3" role="alert">
+                        <p class="font-bold">Warning message</p>
+                        <p class="text-sm">{{ flash_error }}</p>
+                    </div>                                    
+                {% endfor %}
+
                 {{ form_start(registrationForm) }}
                 <form class="mt-8 space-y-6" action="{{ path('app_login') }}" method="POST">
                     <div class="-space-y-px rounded-md shadow-sm">
@@ -58,7 +45,7 @@
                 {{ form_end(registrationForm) }}
             </div>
         </div>            
-          
-        {% endblock %}
-    </body>
-</html>
+        
+    {% endblock %}
+
+{% endembed %}
